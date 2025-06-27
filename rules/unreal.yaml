@@ -4,7 +4,7 @@ version: "1.0"
 
 info:
   name: "Unreal Engine"
-  author: "Game Detector Team"
+  author: "crypticday"
   severity: "info"
   description: "Detects games built with Unreal Engine (UE4/UE5)"
   tags:

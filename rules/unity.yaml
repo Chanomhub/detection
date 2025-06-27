@@ -4,7 +4,7 @@ version: "1.0"
 
 info:
   name: "Unity Engine"
-  author: "Game Detector Team"
+  author: "crypticday"
   severity: "info"
   description: "Detects games built with Unity Engine"
   tags:

@@ -4,7 +4,7 @@ version: "1.0"
 
 info:
   name: "Construct Engine"
-  author: "Game Detector Team"
+  author: "crypticday"
   severity: "info"
   description: "Detects games built with Construct 2/3 Engine"
   tags:
