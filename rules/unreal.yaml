@@ -1,0 +1,91 @@
+# Unreal Engine Detection Rule
+id: unreal-engine-detection
+version: "1.0"
+
+info:
+  name: "Unreal Engine"
+  author: "Game Detector Team"
+  severity: "info"
+  description: "Detects games built with Unreal Engine (UE4/UE5)"
+  tags:
+    - "unreal"
+    - "ue4"
+    - "ue5"
+    - "game-engine"
+
+confidence: 100
+
+detection:
+  files:
+    - pattern: "*.exe"
+      path: ""
+      required: true
+      weight: 10
+    
+    - name: "Engine.ini"
+      path: "Config"
+      required: false
+      weight: 30
+    
+    - name: "DefaultEngine.ini"
+      path: "Config"
+      required: false
+      weight: 35
+    
+    - pattern: "*.pak"
+      path: "Content/Paks"
+      required: false
+      weight: 40
+
+  directories:
+    - name: "Content"
+      path: ""
+      required: false
+      weight: 25
+    
+    - name: "Config"
+      path: ""
+      required: false
+      weight: 20
+    
+    - name: "Paks"
+      path: "Content"
+      required: false
+      weight: 30
+    
+    - name: "Binaries"
+      path: ""
+      required: false
+      weight: 25
+
+  extensions:
+    - extension: ".pak"
+      min_count: 1
+      required: false
+      weight: 35
+    
+    - extension: ".uasset"
+      min_count: 1
+      required: false
+      weight: 30
+    
+    - extension: ".umap"
+      min_count: 1
+      required: false
+      weight: 25
+
+  content:
+    - file: "Config/DefaultEngine.ini"
+      contains: "UnrealEngine"
+      required: false
+      weight: 40
+    
+    - file: "Config/Engine.ini"
+      contains: "[/Script/Engine"
+      required: false
+      weight: 35
+
+metadata:
+  engine_website: "https://unrealengine.com"
+  typical_files: ".pak files, Config folder, Content folder"
+  detection_accuracy: "high"

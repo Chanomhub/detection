@@ -1,0 +1,85 @@
+# Unity Engine Detection Rule
+id: unity-engine-detection
+version: "1.0"
+
+info:
+  name: "Unity Engine"
+  author: "Game Detector Team"
+  severity: "info"
+  description: "Detects games built with Unity Engine"
+  tags:
+    - "unity"
+    - "game-engine"
+    - "cross-platform"
+
+# Confidence threshold for positive detection
+confidence: 100
+
+detection:
+  # File-based detection
+  files:
+    - name: "UnityPlayer.dll"
+      path: ""
+      required: false
+      weight: 40
+    
+    - name: "UnityCrashHandler64.exe"
+      path: ""
+      required: false
+      weight: 30
+    
+    - name: "UnityPlayer.exe"
+      path: ""
+      required: false
+      weight: 35
+    
+    - pattern: "*_Data"
+      path: ""
+      required: false
+      weight: 25
+
+  # Directory-based detection
+  directories:
+    - pattern: "*_Data"
+      path: ""
+      required: false
+      weight: 30
+    
+    - name: "Managed"
+      path: "*_Data"
+      required: false
+      weight: 20
+    
+    - name: "Resources"
+      path: "*_Data"
+      required: false
+      weight: 15
+
+  # File extension detection
+  extensions:
+    - extension: ".assets"
+      min_count: 1
+      required: false
+      weight: 25
+    
+    - extension: ".resS"
+      min_count: 1
+      required: false
+      weight: 20
+
+  # Content-based detection
+  content:
+    - file: "globalgamemanagers"
+      contains: "Unity"
+      required: false
+      weight: 30
+    
+    - file: "*_Data/globalgamemanagers"
+      contains: "UnityEngine"
+      required: false
+      weight: 35
+
+metadata:
+  engine_website: "https://unity.com"
+  typical_files: "UnityPlayer.dll, *_Data folder, .assets files"
+  detection_accuracy: "high"

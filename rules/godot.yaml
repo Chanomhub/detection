@@ -1,0 +1,80 @@
+# Godot Engine Detection Rule
+id: godot-engine-detection
+version: "1.0"
+
+info:
+  name: "Godot Engine"
+  author: "Game Detector Team"
+  severity: "info"
+  description: "Detects games built with Godot Engine"
+  tags:
+    - "godot"
+    - "game-engine"
+    - "open-source"
+
+confidence: 100
+
+detection:
+  files:
+    - name: "project.godot"
+      path: ""
+      required: false
+      weight: 50
+    
+    - pattern: "*.pck"
+      path: ""
+      required: false
+      weight: 40
+    
+    - pattern: "*.exe"
+      path: ""
+      required: true
+      weight: 5
+
+  directories:
+    - name: ".godot"
+      path: ""
+      required: false
+      weight: 30
+    
+    - name: ".import"
+      path: ""
+      required: false
+      weight: 25
+
+  extensions:
+    - extension: ".pck"
+      min_count: 1
+      required: false
+      weight: 40
+    
+    - extension: ".godot"
+      min_count: 1
+      required: false
+      weight: 45
+    
+    - extension: ".gd"
+      min_count: 1
+      required: false
+      weight: 30
+    
+    - extension: ".tscn"
+      min_count: 1
+      required: false
+      weight: 35
+
+  content:
+    - file: "project.godot"
+      contains: "[application]"
+      required: false
+      weight: 40
+    
+    - file: "project.godot"
+      contains: "config_version"
+      required: false
+      weight: 35
+
+metadata:
+  engine_website: "https://godotengine.org"
+  typical_files: "project.godot, .pck files, .tscn files"
+  detection_accuracy: "very-high"

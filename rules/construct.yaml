@@ -1,0 +1,97 @@
+# Construct 2/3 Engine Detection Rule
+id: construct-engine-detection
+version: "1.0"
+
+info:
+  name: "Construct Engine"
+  author: "Game Detector Team"
+  severity: "info"
+  description: "Detects games built with Construct 2/3 Engine"
+  tags:
+    - "construct"
+    - "construct2"
+    - "construct3"
+    - "game-engine"
+    - "2d"
+
+confidence: 100
+
+detection:
+  files:
+    - name: "c2runtime.js"
+      path: ""
+      required: false
+      weight: 50
+    
+    - name: "c3runtime.js"
+      path: ""
+      required: false
+      weight: 50
+    
+    - name: "index.html"
+      path: ""
+      required: false
+      weight: 10
+    
+    - pattern: "*.capx"
+      path: ""
+      required: false
+      weight: 45
+    
+    - pattern: "*.c3p"
+      path: ""
+      required: false
+      weight: 45
+
+  directories:
+    - name: "images"
+      path: ""
+      required: false
+      weight: 20
+    
+    - name: "sounds"
+      path: ""
+      required: false
+      weight: 20
+    
+    - name: "music"
+      path: ""
+      required: false
+      weight: 15
+
+  extensions:
+    - extension: ".capx"
+      min_count: 1
+      required: false
+      weight: 45
+    
+    - extension: ".c3p"
+      min_count: 1
+      required: false
+      weight: 45
+
+  content:
+    - file: "index.html"
+      contains: "c2runtime"
+      required: false
+      weight: 40
+    
+    - file: "index.html"
+      contains: "c3runtime"
+      required: false
+      weight: 40
+    
+    - file: "c2runtime.js"
+      contains: "Construct 2"
+      required: false
+      weight: 45
+    
+    - file: "c3runtime.js"
+      contains: "Construct 3"
+      required: false
+      weight: 45
+
+metadata:
+  engine_website: "https://construct.net"
+  typical_files: "c2runtime.js, c3runtime.js, index.html"
+  detection_accuracy: "high"
