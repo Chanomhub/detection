@@ -1,4 +1,4 @@
-module detection
+module github.com/Chanomhub/detection
 
 go 1.23.4
 
